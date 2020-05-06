@@ -2,7 +2,8 @@
 !demo/
 !.gitignore
 !README.md
-!.env.development
-!.env.production
-!.env.staging
-!wechat
+!.env.*
+!my_other_app
+!satis-demo
+!node-demo
+!laravel-demo

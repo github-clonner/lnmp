@@ -1,0 +1,10 @@
+{
+  "name": "composer",
+  "description": "Dependency Manager for PHP",
+  "version": "1.10.5",
+  "pre-version": "1.10.5",
+  "homepage": "https://getcomposer.org/",
+  "bug": "https://github.com/composer/composer/issues",
+  "github": "composer/composer",
+  "releases": "https://getcomposer.org/download/"
+}

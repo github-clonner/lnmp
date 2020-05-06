@@ -1,144 +1,120 @@
-# Laravel
+# Laravel 最佳实践
 
-## 新建 Laravel 项目
+[![](https://img.shields.io/badge/AD-%E8%85%BE%E8%AE%AF%E4%BA%91%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1-blue.svg)](https://cloud.tencent.com/redirect.php?redirect=10058&cps_key=3a5255852d5db99dcd5da4c72f05df61) [![](https://img.shields.io/badge/Support-%E8%85%BE%E8%AE%AF%E4%BA%91%E8%87%AA%E5%AA%92%E4%BD%93-brightgreen.svg)](https://cloud.tencent.com/developer/support-plan?invite_code=13vokmlse8afh)
 
-交互式输入
+## 安装 Laravel
 
 ```bash
-$ ./lnmp-docker.sh laravel
+$ cd app
 
-# 之后输入路径
+$ lnmp-laravel new laravel
 ```
 
-例如路径输入 `test`，相当于在 `./app/` 执行 `laravel new test`。
+具体请查看 [这里](command.md)
 
-请修改 Laravel 项目的 Redis 客户端配置（`config/database.php` 配置文件 `'client' => 'phpredis'`）。
+### Laravel 版本问题
 
-## artisan
+由于本项目的 PHP 镜像内置的是 Laravel 安装器，而安装器只能安装最新版本。
+
+所以如果你想要安装特定版本（例如 `5.5.x`）请使用 [`lnmp-laravel-by-composer`](command.md) 安装。
 
 ```bash
-$ ./lnmp-docker.sh artisan
+$ cd app
 
-# 之后输入路径
+# $ lnmp-laravel-by-composer new FOLDER VERSION
 
-# 之后输入要执行的参数
+$ lnmp-laravel-by-composer new laravel5.5 5.5
 ```
 
-例如路径输入 `test`，参数输入 `--version`，相当于在 `./app/test/` 执行 `php artisan --version`
-
-### artisan 参数列表
-
-输入 `list` 参数查看，或查看以下资料
+或者直接使用 `composer` 安装
 
 ```bash
-Laravel Framework 5.5.9
+$ cd app
 
-Usage:
-  command [options] [arguments]
-
-Options:
-  -h, --help            Display this help message
-  -q, --quiet           Do not output any message
-  -V, --version         Display this application version
-      --ansi            Force ANSI output
-      --no-ansi         Disable ANSI output
-  -n, --no-interaction  Do not ask any interactive question
-      --env[=ENV]       The environment the command should run under
-  -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
-
-Available commands:
-  clear-compiled       Remove the compiled class file
-  down                 Put the application into maintenance mode
-  env                  Display the current framework environment
-  help                 Displays help for a command
-  inspire              Display an inspiring quote
-  list                 Lists commands
-  migrate              Run the database migrations
-  optimize             Optimize the framework for better performance (deprecated)
-  preset               Swap the front-end scaffolding for the application
-  serve                Serve the application on the PHP development server
-  tinker               Interact with your application
-  up                   Bring the application out of maintenance mode
- app
-  app:name             Set the application namespace
- auth
-  auth:clear-resets    Flush expired password reset tokens
- cache
-  cache:clear          Flush the application cache
-  cache:forget         Remove an item from the cache
-  cache:table          Create a migration for the cache database table
- config
-  config:cache         Create a cache file for faster configuration loading
-  config:clear         Remove the configuration cache file
- db
-  db:seed              Seed the database with records
- event
-  event:generate       Generate the missing events and listeners based on registration
- key
-  key:generate         Set the application key
- make
-  make:auth            Scaffold basic login and registration views and routes
-  make:command         Create a new Artisan command
-  make:controller      Create a new controller class
-  make:event           Create a new event class
-  make:factory         Create a new model factory
-  make:job             Create a new job class
-  make:listener        Create a new event listener class
-  make:mail            Create a new email class
-  make:middleware      Create a new middleware class
-  make:migration       Create a new migration file
-  make:model           Create a new Eloquent model class
-  make:notification    Create a new notification class
-  make:policy          Create a new policy class
-  make:provider        Create a new service provider class
-  make:request         Create a new form request class
-  make:resource        Create a new resource
-  make:rule            Create a new validation rule
-  make:seeder          Create a new seeder class
-  make:test            Create a new test class
- migrate
-  migrate:fresh        Drop all tables and re-run all migrations
-  migrate:install      Create the migration repository
-  migrate:refresh      Reset and re-run all migrations
-  migrate:reset        Rollback all database migrations
-  migrate:rollback     Rollback the last database migration
-  migrate:status       Show the status of each migration
- notifications
-  notifications:table  Create a migration for the notifications table
- package
-  package:discover     Rebuild the cached package manifest
- queue
-  queue:failed         List all of the failed queue jobs
-  queue:failed-table   Create a migration for the failed queue jobs database table
-  queue:flush          Flush all of the failed queue jobs
-  queue:forget         Delete a failed queue job
-  queue:listen         Listen to a given queue
-  queue:restart        Restart queue worker daemons after their current job
-  queue:retry          Retry a failed queue job
-  queue:table          Create a migration for the queue jobs database table
-  queue:work           Start processing jobs on the queue as a daemon
- route
-  route:cache          Create a route cache file for faster route registration
-  route:clear          Remove the route cache file
-  route:list           List all registered routes
- schedule
-  schedule:run         Run the scheduled commands
- session
-  session:table        Create a migration for the session database table
- storage
-  storage:link         Create a symbolic link from "public/storage" to "storage/app/public"
- vendor
-  vendor:publish       Publish any publishable assets from vendor packages
- view
-  view:clear           Clear all compiled view files
+$ lnmp-composer create-project laravel/laravel laravel5.5 "5.5.*"
 ```
 
-## 安装升级 Laravel 依赖包
+## 设置 Laravel .env 文件
+
+正确配置服务的 `HOST`，填写 `127.0.0.1` 将连接不到服务，具体原因不再赘述。
 
 ```bash
-$ ./lnmp-docker.sh composer
+DB_HOST=mysql
 
-# 之后输入路径
+REDIS_HOST=redis
 
-# 之后输入要执行的参数 install 或者 update
+MEMCACHED_HOST=memcached
+```
+
+## Windows 运行 Laravel 响应缓慢的问题
+
+* Docker Desktop 上 Docker 运行在虚拟机，项目文件位于 Windows
+* Docker WSL2 上 Docker 运行在 WSL2(仍然是虚拟机)，项目文件位于 Windows
+
+以上两种情况均为跨主机, 故存在性能问题。
+
+解决思路：`vendor` 目录使用数据卷（数据卷存在于虚拟机中）。[vsCode](https://code.visualstudio.com/docs/remote/containers-advanced#_improving-container-disk-performance) 的说明和笔者提出的方案原理大致相同
+
+编辑 `docker-lnmp.include.yml` 文件，重写默认的 `php` `composer` 配置。
+
+```yaml
+version: "3.7"
+
+services:
+  # 这里增加的条目会重写本项目的默认配置
+  php7:
+    &php7
+    # vendor 目录使用数据卷
+    volumes:
+      # 假设 laravel 目录位于 `./app/laravel/`
+      - type: volume
+        source: laravel_vendor
+        target: /app/laravel/vendor
+      # 假设还有一个 Laravel 应用位于 `./app/laravel2` 与 `./app/laravel` 版本一致（依赖一致），那么可以共用 vendor 数据卷
+      - type: volume
+        source: laravel_vendor
+        target: /app/laravel2/vendor
+      # 假设还有一个 laravel 5.5 应用位于 `./app/laravel5.5`，由于与 `./app/laravel` 版本或依赖不一致，必须使用新的数据卷
+      - type: volume
+        source: laravel_55_vendor
+        target: /app/laravel5.5/vendor
+
+  composer:
+    << : *php7
+
+# 定义数据卷
+volumes:
+  laravel_vendor:
+  laravel_57_vendor:
+```
+
+修改之后启动
+
+```bash
+$ lnmp-docker up
+```
+
+在容器中运行 composer ，安装依赖
+
+```bash
+# $ lnmp-docker composer LARAVEL_ROOT COMPOSER_COMMAND
+$ lnmp-docker composer /app/laravel install
+```
+
+以后若在 `composer.json` 中添加依赖，重复上述步骤。
+
+## 运行 Laravel 队列(Queue)
+
+使用 **宿主机** 的系统级的守护程序（systemd 等）来运行以下命令。具体请查看 [systemd](systemd.md)
+
+```bash
+$ lnmp-docker php7-cli php /app/laravel/artisan queue:work --tries=3
+```
+
+## 运行 Laravel 调度器(Schedule)
+
+使用 **宿主机** 的系统级的计划任务（systemd、crontab 等）执行以下命令即可
+
+```bash
+$ lnmp-docker php7-cli php /app/laravel/artisan schedule:run
 ```

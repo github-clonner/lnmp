@@ -1,151 +1,299 @@
 # LNMP Docker
 
-[![GitHub stars](https://img.shields.io/github/stars/khs1994-docker/lnmp.svg?style=social&label=Stars)](https://github.com/khs1994-docker/lnmp) [![GitHub release](https://img.shields.io/github/release/khs1994-docker/lnmp.svg)](https://github.com/khs1994-docker/lnmp/releases) [![Build Status](https://travis-ci.org/khs1994-docker/lnmp.svg?branch=master)](https://travis-ci.org/khs1994-docker/lnmp) [![GitHub (pre-)release](https://img.shields.io/github/release/khs1994-docker/lnmp/all.svg)](https://github.com/khs1994-docker/lnmp/releases) [![license](https://img.shields.io/github/license/khs1994-docker/lnmp.svg)](https://github.com/khs1994-docker/lnmp) [![Platform](https://img.shields.io/badge/Platform-Linux%E3%80%81macOS%E3%80%81Raspberry%20Pi-blue.svg)](https://github.com/khs1994-docker/lnmp)
+[![GitHub stars](https://img.shields.io/github/stars/khs1994-docker/lnmp.svg?style=social&label=Stars)](https://github.com/khs1994-docker/lnmp) [![Build Status](https://travis-ci.com/khs1994-docker/lnmp.svg?branch=master)](https://travis-ci.com/khs1994-docker/lnmp) [![GitHub release](https://img.shields.io/github/release/khs1994-docker/lnmp.svg)](https://github.com/khs1994-docker/lnmp/releases) [![GitHub (pre-)release](https://img.shields.io/github/release/khs1994-docker/lnmp/all.svg)](https://github.com/khs1994-docker/lnmp/releases) [![license](https://img.shields.io/github/license/khs1994-docker/lnmp.svg)](https://github.com/khs1994-docker/lnmp) [![Build Status](https://ci.khs1994.com/github/khs1994-docker/lnmp/status?branch=master)](https://ci.khs1994.com/github/khs1994-docker/lnmp)
 
-使用 Docker Compose 快速搭建 LNMP 环境。
+[![star](https://gitee.com/khs1994-docker/lnmp/badge/star.svg?theme=dark)](https://gitee.com/khs1994-docker/lnmp/stargazers) [![](https://img.shields.io/badge/AD-%E8%85%BE%E8%AE%AF%E4%BA%91%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1-blue.svg)](https://cloud.tencent.com/redirect.php?redirect=10058&cps_key=3a5255852d5db99dcd5da4c72f05df61) [![](https://img.shields.io/badge/Support-%E8%85%BE%E8%AE%AF%E4%BA%91%E8%87%AA%E5%AA%92%E4%BD%93-brightgreen.svg)](https://cloud.tencent.com/developer/support-plan?invite_code=13vokmlse8afh)
+
+:computer: :whale: :elephant: :dolphin: :penguin: :rocket: 使用 Docker Compose 快速搭建 LNMP 环境，仅需 **一条命令** `$ ./lnmp-docker up`
+
+**企业版** 个性化定制请访问 [`lnmp-ee`](https://github.com/khs1994-docker/lnmp-ee)
+
+| Platform | Status |
+| -- | -- |
+| Windows | [![Build status](https://ci.appveyor.com/api/projects/status/itgp61n808n80b8m/branch/master?svg=true)](https://ci.appveyor.com/project/khs1994-docker/lnmp/branch/master) |
+| Linux |  [![Build Status](https://ci.khs1994.com/github/khs1994-docker/lnmp/status?branch=master)](https://ci.khs1994.com/github/khs1994-docker/lnmp) |
+| macOS | [![Build Status](https://travis-ci.com/khs1994-docker/lnmp.svg?branch=master)](https://travis-ci.com/khs1994-docker/lnmp) |
+| Linux arm64v8 | - |
+| Linux arm32v7 | - |
+
+<p align="center">
+<img width="600" src="https://user-images.githubusercontent.com/16733187/47264269-2467a780-d546-11e8-8cde-f63207ee28d9.jpg">
+</p>
 
 * [项目初衷](docs/why.md)
 
-* [支持文档](docs)
+* [支持文档](https://docs.lnmp.khs1994.com)
 
-不再支持 Windows！
+* [腾讯云 Kubernetes](https://cloud.tencent.com/redirect.php?redirect=10058&cps_key=3a5255852d5db99dcd5da4c72f05df61)
 
-本项目支持 `x86_64` 架构的 Linux, macOS，并且支持 `arm` 架构的 Debian(即树莓派)。
+* [项目演示](https://asciinema.org/a/215588)
 
-# 更新记录
+* [反馈](https://github.com/khs1994-docker/lnmp/issues?q=is%3Aopen+is%3Aissue+label%3Alnmp%2Ffeedback)
 
-每月更新版本，版本命名方式为 `YY-MM`，更新记录请查看 [Releases](https://github.com/khs1994-docker/lnmp/releases)，查看最新提交请切换到 [dev 分支](https://github.com/khs1994-docker/lnmp/tree/dev)。
+* [计划支持特性](https://github.com/khs1994-docker/lnmp/issues?q=is%3Aopen+is%3Aissue+label%3Alnmp%2Ftodo)
 
-最新的提交位于 [dev](https://github.com/khs1994-docker/lnmp/tree/dev) 分支。
+* [最佳实践](https://github.com/khs1994-docker/php-demo)
 
-* [v17.10 2017-11-01](https://github.com/khs1994-docker/lnmp/releases/tag/v17.10)
+* [赞助](https://zan.khs1994.com)
 
-* [v17.09 2017-10-14](https://github.com/khs1994-docker/lnmp/releases/tag/v17.09) **EOL**
+本项目支持 `x86_64` 架构的 Linux，macOS，Windows 10 并且支持 `arm` 架构的 Debian(树莓派)。
 
-# 准备
+:warning: 除了 `.env` 等特定文件，本项目中的任何文件严禁二次修改。[为什么？](https://github.com/khs1994-docker/lnmp/issues/238)
+
+:warning: Windows Docker 非常不稳定，且运行 Laravel 响应较慢。[解决办法](docs/laravel.md)
+
+:gift: 为了本项目的持续发展，你可以使用 [推广产品](ad) 或直接 [打赏](https://zan.khs1994.com) 赞助本项目。
+
+:whale: [腾讯云 Kubernetes](https://cloud.tencent.com/redirect.php?redirect=10058&cps_key=3a5255852d5db99dcd5da4c72f05df61)
+
+## 微信订阅号
+
+<p align="center">
+<img width="200" src="https://user-images.githubusercontent.com/16733187/46847944-84a96b80-ce19-11e8-9f0c-ec84b2ac463e.jpg">
+</p>
+
+<p align="center"><strong>关注项目作者微信订阅号，接收项目最新动态</strong></p>
+
+## 准备
 
 本项目需要以下软件：
 
-* [Docker CE](https://github.com/docker/docker-ce) 17.10.0+
+:one: [Git](https://mirrors.huaweicloud.com/git-for-windows/)
 
-* [Docker Compose](https://github.com/docker/compose) 1.17.1+
+:two: [Docker CE](https://github.com/yeasy/docker_practice/tree/master/install) 19.03 Stable +
 
-# 快速上手
+:three: [Docker Compose](https://github.com/yeasy/docker_practice/blob/master/compose/install.md) 1.25.0+
 
-简单而言，搞明白了项目路径，Nginx 配置就行了，遇到任何问题请提出 issue。
+:four: WSL (**Windows** Only)
 
-## 使用一键安装脚本
+## 快速上手
+
+### Windows 10
+
+如果你使用的是 Windows 10 请查看 [支持文档](docs/install/windows.md)。
+
+### 安装
+
+> 鉴于国内 clone GitHub 项目较慢，本项目在 gitee.com 托管，每日集成到 GitHub，建议国内用户使用中国镜像，技术交流请到本项目 GitHub，避免在 gitee.com 提 issue 或 PR。
 
 ```bash
-$ curl -fsSL lnmp.khs1994.com -o lnmp.sh ; sh lnmp.sh
+$ git clone --depth=1 https://github.com/khs1994-docker/lnmp.git
+
+# $ git clone --depth=1 git@github.com:khs1994-docker/lnmp.git
+
+# 从 GitHub 克隆太慢？请使用中国镜像
+
+$ git clone --depth=1 https://gitee.com/khs1994-docker/lnmp.git
+
+# $ git clone --depth=1 git@gitee.com:khs1994-docker/lnmp.git
 ```
 
-## 使用 `git clone`
-
-开发环境中，本应该在本机构建所需 Docker 镜像，但为了项目的快速启动，默认为拉取镜像，如果要构建镜像请在命令后添加 `--build`。
+### 启动 LNMP Demo
 
 ```bash
-$ git clone --recursive -b dev git@github.com:khs1994-docker/lnmp.git
-
 $ cd lnmp
 
-$ ./lnmp-docker.sh devlopment
+$ ./lnmp-docker up
 
 $ curl 127.0.0.1
 
-Welcome use khs1994-docker/lnmp v17.10 x86_64 With Pull Docker Image
+Welcome use khs1994-docker/lnmp v19.03 x86_64 With Pull Docker Image
 
 development
 
 ```
 
-## PHP 项目开发
+:bulb: MySQL 默认 ROOT 密码为 `mytest`
 
-在 `./app` 目录下开始 PHP 项目开发。在 `./config/nginx/` 新建 nginx 配置文件。
+### PHP 项目开发
+
+在 `./app/` 下新建一个文件夹作为 PHP 项目开发目录，并在 `./config/nginx/` 新建一个 nginx 配置文件。
+
+你也可以使用以下命令快速的新建一个 PHP 项目，并完成后续一系列配置（生成 nginx 配置、申请 SSL 证书）。
+
+```bash
+# $ ./lnmp-docker new
+
+$ ./lnmp-docker restart nginx
+```
+
+> 你可以通过设置 `APP_ROOT` 来改变 PHP 项目文件夹所在位置。
+
+更多信息请查看 LNMP 容器化最佳实践 https://github.com/khs1994-docker/php-demo
+
+### 如何连接服务
+
+:no_entry: ~~`$redis->connect('127.0.0.1',6379);`~~
+
+:no_entry: ~~`$pdo = new \PDO('mysql:host=127.0.0.1;dbname=test;port=3306','root','mytest');`~~
+
+```php
+$redis = new \Redis();
+
+$redis->connect('redis', 6379);
+
+$pdo = new \PDO('mysql:host=mysql,dbname=test,port=3306', 'root', 'mytest');
+```
+
+## 云容器服务推广 :whale:
+
+**腾讯云 Kubernetes**
+
+* [腾讯云容器服务](https://cloud.tencent.com/redirect.php?redirect=10058&cps_key=3a5255852d5db99dcd5da4c72f05df61)
+
+## 进阶
+
+* [Kubernetes](https://github.com/khs1994-docker/lnmp-k8s)
+
+* [Helm](https://github.com/khs1994-docker/lnmp-k8s/tree/master/helm)
+
+## PHPer 常用命令
+
+* `lnmp-php`
+
+* `lnmp-composer`
+
+* `lnmp-phpunit`
+
+* `lnmp-laravel`
+
+* `...`
+
+更多信息请请查看 [支持文档](docs/command.md)
+
+## 一键申请 SSL 证书
+
+>由 [`acme.sh`](https://github.com/acmesh-official/acme.sh) 提供支持
+
+```bash
+$ ./lnmp-docker ssl khs1994.com -d *.khs1994.com
+```
+
+>使用前请提前在 `.env` 文件或系统环境变量中设置 DNS 服务商的相关密钥。也支持一键生成自签名 SSL 证书，更多信息请查看 [支持文档](docs/nginx/issue-ssl.md)
+
+## 查看详情
+
+```bash
+$ docker container ls -a -f label=com.khs1994.lnmp
+```
+
+## 自行构建 LNMP 镜像
+
+如果要使用自行构建的镜像请查看 [支持文档](docs/development.md)
+
+## 重启
+
+```bash
+# 全部重启
+$ ./lnmp-docker restart
+
+# 重启指定软件
+$ ./lnmp-docker restart nginx php7
+```
 
 ## 停止
 
 ```bash
-$ docker-compose stop
+$ ./lnmp-docker stop
 ```
 
 ## 销毁
 
 ```bash
-$ docker-compose down
+$ ./lnmp-docker down
 ```
 
-# 项目说明
+## 项目说明
 
-## 包含软件
+### 支持特性
+
+请查看 [支持文档](https://github.com/khs1994-docker/lnmp/tree/master/docs#%E7%89%B9%E8%89%B2)
+
+### 包含软件
 
 |Name|Docker Image|Version|Based|
 |:-- |:--         |:--    |:--  |
-|[NGINX](https://github.com/khs1994-docker/nginx)         |`khs1994/nginx:1.13.6-alpine`    |[![GitHub release](https://img.shields.io/github/release/khs1994-docker/nginx.svg)](https://github.com/khs1994-docker/nginx/releases)      |`Alpine:3.5`|
-|MySQL                                                    |`mysql:5.7.20`                   |[![GitHub release](https://img.shields.io/badge/release-v5.7.20-blue.svg)](https://github.com/docker-library/docs/tree/master/mysql)       |`Debian:jessie`|
-|[Redis](https://github.com/khs1994-docker/redis)         |`khs1994/redis:4.0.2-alpine`     |[![GitHub release](https://img.shields.io/github/release/khs1994-docker/redis.svg)](https://github.com/khs1994-docker/redis/releases)      |`Alpine:3.6`|
-|[PHP-FPM](https://github.com/khs1994-docker/php-fpm)     |`khs1994/php-fpm:7.1.11-alpine3.4`  |[![GitHub release](https://img.shields.io/github/release/khs1994-docker/php-fpm.svg)](https://github.com/khs1994-docker/php-fpm/releases)  |`Alpine:3.4`|
-|Laravel                                                  |`khs1994/php-fpm:7.1.11-alpine3.4`  |[![GitHub release](https://img.shields.io/badge/release-v5.5.0-blue.svg)](https://github.com/laravel/laravel/releases)                     |`Alpine:3.4`|
-|Composer                                                 |`khs1994/php-fpm:7.1.11-alpine3.4`  |[![GitHub release](https://img.shields.io/badge/release-v1.5.2-blue.svg)](https://github.com/docker-library/docs/tree/master/composer)     |`Alpine:3.4`|
-|[Memcached](https://github.com/khs1994-docker/memcached) |`khs1994/memcached:1.5.3-alpine` |[![GitHub release](https://img.shields.io/github/release/khs1994-docker/memcached.svg)](https://github.com/khs1994-docker/memcached/releases)  |`Alpine:3.6`|
-|[RabbitMQ](https://github.com/khs1994-docker/rabbitmq)   |`khs1994/rabbitmq:3.6.14-management-alpine` |[![GitHub release](https://img.shields.io/github/release/khs1994-docker/rabbitmq.svg)](https://github.com/khs1994-docker/rabbitmq/releases)    |`Alpine:3.6`|
-|[PostgreSQL](https://github.com/khs1994-docker/postgres) |`khs1994/postgres:10.1-alpine`   |[![GitHub release](https://img.shields.io/github/release/khs1994-docker/postgres.svg)](https://github.com/khs1994-docker/postgres/releases)    |`Alpine:3.6`|
-|MongoDB                                                  |`mongo:3.5.13`                  |[![GitHub release](https://img.shields.io/badge/release-v3.5.13-blue.svg)](https://github.com/docker-library/docs/tree/master/mongo)       |`Debian:jessie`|
+|[ACME.sh](https://github.com/acmesh-official/acme.sh)                            |`khs1994/acme:2.8.5`        | **2.8.5**              |`alpine:3.11`    |
+|[NGINX](https://github.com/khs1994-website/tls-1.3)                       |`nginx:1.17.10-alpine`      | **1.17.10**             |`alpine:3.11`    |
+|[NGINX Unit](https://github.com/nginx/unit)                               |`khs1994/php:7.4.5-unit-alpine`| **1.17.0**             |`alpine:3.11`    |
+|[HTTPD](https://github.com/docker-library/docs/tree/master/httpd)         |`httpd:2.4.43-alpine`       | **2.4.43**             |`alpine:3.11`    |
+|[MySQL](https://github.com/docker-library/docs/tree/master/mysql)         |`mysql:8.0.19`              | **8.0.19**             |`debian:buster-slim`|
+|[MariaDB](https://github.com/docker-library/docs/tree/master/mariadb)     |`mariadb:10.5.2`            | **10.5.2**             |`ubuntu:bionic` |
+|[Redis](https://github.com/docker-library/docs/tree/master/redis)         |`redis:6.0-rc4-alpine`        | **6.0-rc4**            |`alpine:3.11`    |
+|[PHP-FPM](https://github.com/khs1994-docker/php)                      |`khs1994/php:7.4.5-fpm-alpine`  | **7.4.5**       |`alpine:3.11`    |
+|[Composer](https://github.com/docker-library/docs/tree/master/composer)   |`khs1994/php:7.4.5-composer-alpine`  | **1.10.5**       |`alpine:3.11`    |
+|[Memcached](https://github.com/docker-library/docs/tree/master/memcached) |`memcached:1.6.5-alpine`           | **1.6.5**       |`alpine:3.11`    |
+|[RabbitMQ](https://github.com/docker-library/docs/tree/master/rabbitmq)   |`rabbitmq:3.8.3-management-alpine` | **3.8.3**       |`alpine:3.11`    |
+|[PostgreSQL](https://github.com/docker-library/docs/tree/master/postgres) |`postgres:12.2-alpine`             | **12.2**        |`alpine:3.11`    |
+|[MongoDB](https://github.com/docker-library/docs/tree/master/mongo)       |`mongo:4.2.6`                      | **4.2.6**       |`ubuntu:bionic` |
+|[PHPMyAdmin](https://github.com/phpmyadmin/docker)                        | `phpmyadmin/phpmyadmin:latest`    | **latest**      |`alpine:3.11`    |
+|[Registry](https://github.com/khs1994-docker/registry)                    |`registry:latest`                  | **latest**      |`alpine:3.8`    |
 
-## 文件夹结构
+### 文件夹结构
 
 |文件夹|说明|
 |:--|:--|
 |`app`         |项目文件（HTML, PHP, etc）|
-|`backup`      |备份文件|
-|`bash`        |用户自定义脚本文件|
-|`config`      |配置文件 「nginx 配置文件位于[Git 子模块](https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97)」|               
-|`dockerfile`  |自定义 Dockerfile|
-|`logs`        |日志文件|
-|`tmp`         |临时文件|
+|`backup`      |备份文件          |
+|`bin`         |PHPer 常用命令    |
+|`config`      |配置文件          |
+|`dockerfile`  |自定义 Dockerfile |
+|`log`         |日志文件          |
+|`scripts`     |用户自定义脚本文件  |
 
-## 端口暴露
+### 端口暴露
 
 * 80
 * 443
+* 8080 `PHPMyAdmin` (仅开发环境)
 
-# 命令行工具
+## 命令行工具
 
-为简化操作方式，本项目提供了 `交互式` 的命令行工具 [`./lnmp-docker.sh`](docs/cli.md)。
+为简化操作方式，本项目提供了 `交互式` 的命令行工具 [`./lnmp-docker`](docs/cli.md)
 
-# 生产环境
+## 生产环境
 
-马上开启 `容器即服务( CaaS )` 之旅！更多信息请查看 [支持文档](docs/production/README.md)。
+马上开启 `容器即服务( CaaS )` 之旅！更多信息请查看 [支持文档](docs/swarm/README.md)
 
-# 生产环境用户
+## 生产环境用户
 
-## [khs1994.com](//khs1994.com)
+### [khs1994.com](//khs1994.com)
 
-## [xc725.wang](//xc725.wang)
+### [PCIT -- PHP CI TOOLKIT](https://github.com/pcit-ce/pcit)
 
-# 项目国内镜像
+## 项目国内镜像
 
 * TGit：https://git.qcloud.com/khs1994-docker/lnmp.git
 * 阿里云 CODE：https://code.aliyun.com/khs1994-docker/lnmp.git
 * 码云：https://gitee.com/khs1994/lnmp.git
 * Coding：https://git.coding.net/khs1994/lnmp.git
 
-# CI/CD
+## TLS1.3
+
+请查看 https://github.com/khs1994-docker/lnmp/issues/137
+
+## CI/CD
 
 请使用 [khs1994-docker/ci](https://github.com/khs1994-docker/ci)
 
-# 贡献项目
+## 支持文档
 
-请查看：[如何贡献](.github/CONTRIBUTING.md)
+https://docs.lnmp.khs1994.com
 
-# 感谢
+## 贡献项目
 
+请查看：[如何贡献](CONTRIBUTING.md)
+
+## 感谢
+
+* LNMP
 * [Docker Cloud](https://cloud.docker.com)
-* [Tencent Cloud Container Service](https://console.cloud.tencent.com/ccs)
+* [Tencent Cloud Container Service](https://cloud.tencent.com/product/ccs)
+* [Let's Encrypt](https://letsencrypt.org/)
+* [acme.sh](https://github.com/acmesh-official/acme.sh)
 
-# 更多资料
+## 更多资料
 
-* [LNMP 容器默认配置](https://github.com/khs1994-docker/lnmp-default-config)
 * [Docker Compose 中国镜像](https://github.com/khs1994-docker/compose-cn-mirror)
 * [Docker 从入门到实践](https://github.com/yeasy/docker_practice)
 * [Compose file version 3 reference](https://docs.docker.com/compose/compose-file/)
@@ -155,3 +303,21 @@ $ docker-compose down
 * [micooz/docker-lnmp](https://github.com/micooz/docker-lnmp)
 * [twang2218/docker-lnmp](https://github.com/twang2218/docker-lnmp)
 * [bravist/lnmp-docker](https://github.com/bravist/lnmp-docker)
+* [yeszao/dnmp](https://github.com/yeszao/dnmp)
+* [laradock/laradock](https://github.com/laradock/laradock)
+
+## 赞助项目
+
+请访问 [https://zan.khs1994.com](https://zan.khs1994.com)
+
+## 数据收集
+
+本项目每日默认会将用户的系统和 IP 信息发送到数据收集服务器。建议用户保持开启状态来帮助提升本项目。
+
+你可以通过在 `.env` 文件中设置 `DATA_COLLECTION=false` 来禁用数据收集服务。
+
+## 云容器服务推广 :whale:
+
+**腾讯云 Kubernetes**
+
+* [腾讯云容器服务](https://cloud.tencent.com/redirect.php?redirect=10058&cps_key=3a5255852d5db99dcd5da4c72f05df61)

@@ -1,6 +1,9 @@
-version: "3.3"
+version: "3.7"
 services:
 
   redis:
-    build: .
-    image: ${DOCKER_HUB_USERNAME}/redis:${TAG}-alpine
+    build:
+      context: .
+      args:
+        ALPINE_URL: mirrors.ustc.edu.cn
+    image: ${DOCKER_HUB_USERNAME:-khs1994}/redis:${TAG:-6.0-rc4}-alpine
